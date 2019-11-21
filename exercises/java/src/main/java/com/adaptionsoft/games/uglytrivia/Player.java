@@ -2,13 +2,13 @@ package com.adaptionsoft.games.uglytrivia;
 
 public class Player {
     private final String name;
-    private int place;
+    private Place place;
     private int purse;
     private boolean isInPenaltyBox;
 
     public Player(String name) {
         this.name = name;
-        this.place = 0;
+        this.place = new Place(0);
         this.purse = 0;
         this.isInPenaltyBox = false;
     }
@@ -17,7 +17,7 @@ public class Player {
         return name;
     }
 
-    public int getPlace() {
+    public Place getPlace() {
         return place;
     }
 
@@ -29,7 +29,7 @@ public class Player {
         return isInPenaltyBox;
     }
 
-    public void setPlace(int place) {
+    public void setPlace(Place place) {
         this.place = place;
     }
 

@@ -68,12 +68,18 @@ public class Game {
 
     private void moveCurrentPlayer(int roll) {
     	Player player = players.get(currentPlayer);
-        player.setPlace(player.getPlace() + roll);
-        if (player.getPlace() > 11) player.setPlace(player.getPlace() - 12);
+
+    	Place place = new Place(0);
+    	place.setIndex(player.getPlace().getIndex() + roll);
+        player.setPlace(place);
+
+        if (place.getIndex() > 11) {
+			player.setPlace(new Place(player.getPlace().getIndex() - 12));
+		}
 
         System.out.println(players.get(currentPlayer).getName()
                 + "'s new location is "
-                + player.getPlace());
+                + player.getPlace().getIndex());
         System.out.println("The category is " + currentCategory());
         askQuestion();
     }
@@ -92,15 +98,17 @@ public class Game {
 	
 	private String currentCategory() {
 		Player player = players.get(currentPlayer);
-		if (player.getPlace() == 0) return "Pop";
-		if (player.getPlace() == 4) return "Pop";
-		if (player.getPlace() == 8) return "Pop";
-		if (player.getPlace() == 1) return "Science";
-		if (player.getPlace() == 5) return "Science";
-		if (player.getPlace() == 9) return "Science";
-		if (player.getPlace() == 2) return "Sports";
-		if (player.getPlace() == 6) return "Sports";
-		if (player.getPlace() == 10) return "Sports";
+		int index = player.getPlace().getIndex();
+
+		if (index == 0) return "Pop";
+		if (index == 4) return "Pop";
+		if (index == 8) return "Pop";
+		if (index == 1) return "Science";
+		if (index == 5) return "Science";
+		if (index == 9) return "Science";
+		if (index == 2) return "Sports";
+		if (index == 6) return "Sports";
+		if (index == 10) return "Sports";
 		return "Rock";
 	}
 
