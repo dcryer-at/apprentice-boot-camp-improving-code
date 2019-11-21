@@ -116,11 +116,11 @@ public class Game {
                 incrementCurrentPlayerCoins();
 
                 boolean winner = didPlayerWin();
-                changeToNextPlayer();
+                switchToNextPlayer();
 
                 return winner;
             } else {
-				changeToNextPlayer();
+				switchToNextPlayer();
 				return true;
 			}
 			
@@ -133,7 +133,7 @@ public class Game {
 
             boolean winner = didPlayerWin();
 
-            changeToNextPlayer();
+            switchToNextPlayer();
 
             return winner;
         }
@@ -147,7 +147,7 @@ public class Game {
                 + " Gold Coins.");
     }
 
-    private void changeToNextPlayer() {
+    private void switchToNextPlayer() {
         currentPlayer++;
         if (currentPlayer == players.size()) currentPlayer = 0;
     }
