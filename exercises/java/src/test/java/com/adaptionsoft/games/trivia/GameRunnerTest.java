@@ -14,7 +14,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 class GameRunnerTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
 
     @BeforeEach
     void setUpStreams() {
@@ -23,7 +22,7 @@ class GameRunnerTest {
 
     @AfterEach
     void restoreStreams() throws IOException {
-        System.setOut(originalOut);
+        System.setOut(System.out);
         outContent.close();
     }
 
